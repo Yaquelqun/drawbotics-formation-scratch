@@ -19,6 +19,11 @@ def create
   redirect_to chapter_path(@chapter)
 end
 
+def destroy
+  Chapter.find(params[:chapter_id]).delete
+  redirect_to courses_path #TODO need a better redirect
+end
+
 private
 
 def chapter_params

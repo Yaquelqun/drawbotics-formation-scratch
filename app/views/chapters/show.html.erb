@@ -2,6 +2,9 @@
 
 <%= link_to "add  a session", new_session_path(chapter_id: @chapter.id), class: "btn btn-lg btn-primary" %>
 <br/>
+<%= link_to "delete this chapter", chapter_path(chapter_id: @chapter.id), method: :delete%>
+
+<br/>
 <h2> List of Sessions </h2>
 <% if @sessions.any? %>
   <ul class = "sessions">

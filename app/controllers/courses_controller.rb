@@ -18,6 +18,11 @@ def create
   redirect_to courses_path
 end
 
+def destroy
+  Course.find(params[:course_id]).delete
+  redirect_to courses_path
+end
+
 private
 
 def course_params
