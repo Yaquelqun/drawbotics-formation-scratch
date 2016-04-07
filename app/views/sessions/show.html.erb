@@ -1,1 +1,21 @@
 <h1>  Session <%= @session.position%> at <%= @session.date %> in <%= @session.location %> </h1>
+
+<h3> Course : <%= Course.find(Chapter.find(@session.chapter_id).course_id).name%>  Chapter :<%= Chapter.find(@session.chapter_id).name%> </h3>
+
+<h2> Participants </h2>
+  <ul>
+    <% @session.attendances.each do |attendance| %>
+      <li>
+        <ul>
+          <%= "#{attendance.user.username} - #{attendance.success ? "success" : "failed"}"%>
+          <li>
+            <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
+          </li>
+          <li>
+            <%= link_to "fail", attendance_path(id: attendance.id, success: false), method: :put%>
+          </li>
+        </ul>
+      </li>
+    <% end%>
+
+  </ul>

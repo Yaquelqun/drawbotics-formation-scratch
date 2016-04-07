@@ -6,4 +6,20 @@ class Attendance < ActiveRecord::Base
   #validation process
   validates(:user_id, presence: true, allow_nil:false)
   validates(:session_id, presence: true, allow_nil:false)
+
+  def success!
+    update!(success: true)
+  end
+
+  def fail!
+    update!(success: false)
+  end
+
+  def success?
+    success
+  end
+
+  def failed?
+    !success
+  end
 end

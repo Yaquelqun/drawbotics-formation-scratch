@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
 
   def show
-    @session = Session.find(params[:id])
+    @session = Session.includes(attendances: [:user]).find(params[:id])
   end
+
   def new
     @session = chapter.sessions.build
     if chapter.sessions.any?
