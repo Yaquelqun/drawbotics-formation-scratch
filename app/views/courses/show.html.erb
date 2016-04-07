@@ -1,0 +1,12 @@
+<h1>
+  <%= @course.name %>
+</h1>
+<br/>
+<h2> List of Chapters </h2>
+<% if @chapters.any? %>
+  <ul class = "chapters">
+    <%= render @chapters %>
+  </ul>
+<% else %>
+  pas encore de chapitre
+<%end%>

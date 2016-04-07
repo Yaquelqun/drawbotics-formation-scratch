@@ -4,6 +4,11 @@ def index
   @courses = Course.all
 end
 
+def show
+  @course = Course.find(params[:id])
+  @chapters = @course.chapters
+end
+
 def new
   @course = Course.new
 end
