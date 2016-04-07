@@ -2,6 +2,7 @@ class ChaptersController < ApplicationController
 
 def show
   @chapter = Chapter.find(params[:id])
+  @sessions = @chapter.sessions
 end
 
 def new

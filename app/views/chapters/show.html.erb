@@ -1,1 +1,12 @@
 <h1>  Chapter <%= @chapter.position%> : <%= @chapter.name %> </h1>
+
+<%= link_to "add  a session", addSession_path(chapter_id: @chapter.id), class: "btn btn-lg btn-primary" %>
+<br/>
+<h2> List of Sessions </h2>
+<% if @sessions.any? %>
+  <ul class = "sessions">
+    <%= render @sessions %>
+  </ul>
+<% else %>
+  pas encore de session
+<%end%>

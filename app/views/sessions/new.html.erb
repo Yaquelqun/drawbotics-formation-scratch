@@ -1,0 +1,21 @@
+<h1>Add a session to <%= Chapter.find(params[:chapter_id]).name %></h1>
+
+<div >
+  <div >
+    <%= form_for(@session) do |f| %>
+
+    <%= f.label :location %>
+    <%= f.text_field :location, class: 'form-control' %>
+
+    <%= f.label :date %>
+    <%= f.date_field :date, class: 'form-control' %>
+
+    <%= f.label :position %>
+    <%= f.text_field :position, :readonly => true, class: 'form-control' %>
+
+    <%= f.hidden_field :chapter_id%>
+
+      <%= f.submit "add the session", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
