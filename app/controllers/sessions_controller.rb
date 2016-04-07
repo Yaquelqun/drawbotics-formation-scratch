@@ -14,9 +14,15 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.create(session_params)
+    @session.users << User.find(user_ids)
     redirect_to session_path(@session)
   end
+
   private
+
+  def user_ids
+    params.require(:session).permit(user_ids:[])[:user_ids].reject(&:empty?)
+  end
 
   def session_params
     params.require(:session).permit(:location, :date, :position, :chapter_id)
