@@ -2,12 +2,8 @@ Rails.application.routes.draw do
 
 root 'static_pages#home'
 
-get 'addUser' => 'users#new'
 get 'listUsers' => 'users#index'
 get 'listCourses' => 'courses#index'
-get 'createCourse' => 'courses#new'
-get 'addChapter' => 'chapters#new'
-get 'addSession' => 'sessions#new'
 
 resources :users
 resources :courses
