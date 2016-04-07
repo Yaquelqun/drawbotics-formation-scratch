@@ -6,6 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+  <h1>
+    <%= link_to "TRAINING", root_path, class: "btn btn-lg btn-primary" %>
+  </h1>
+</header>
 <body>
 
 <%= yield %>
