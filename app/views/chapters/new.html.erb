@@ -1,0 +1,16 @@
+<h1>Add a chapter to <%= Course.find(params[:course_id]).name %></h1>
+
+<div >
+  <div >
+    <%= form_for(@chapter) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :position %>
+    <%= f.text_field :position, :readonly => true, class: 'form-control' %>
+    <%= f.hidden_field :course_id%>
+
+      <%= f.submit "Add the chapter", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

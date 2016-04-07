@@ -2,6 +2,8 @@
   <%= @course.name %>
 </h1>
 <br/>
+<%= link_to "Add a chapter to this course", addChapter_path(course_id: @course.id), class: "btn btn-lg btn-primary" %>
+<br/>
 <h2> List of Chapters </h2>
 <% if @chapters.any? %>
   <ul class = "chapters">

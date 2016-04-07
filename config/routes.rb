@@ -6,7 +6,7 @@ get 'addUser' => 'users#new'
 get 'listUsers' => 'users#index'
 get 'listCourses' => 'courses#index'
 get 'createCourse' => 'courses#new'
-
+get 'addChapter' => 'chapters#new'
 
 resources :users
 resources :courses
