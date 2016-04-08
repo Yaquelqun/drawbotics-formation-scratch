@@ -11,8 +11,8 @@ def show
   @course = Course.find(params[:id])
   @chapters = @course.chapters
   if(params[:user_id].present?)
-    @current_chapter = User.current_chapter(@course)
     @user = User.find(params[:user_id])
+    @current_chapter_number = @user.current_chapter(@course)    
   end
 end
 

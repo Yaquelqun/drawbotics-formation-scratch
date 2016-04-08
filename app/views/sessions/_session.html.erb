@@ -1,3 +1,6 @@
 <li>
    <%= link_to "Session number #{session.position}", session %> : <%=session.location%> at <%=session.date%>
+   <% if params[:user_id].present?%>
+   <t\><%=link_to "attend this session", attendances_path(id: session.id,user_id: @user.id, method: :post) %>
+   <% end %>
 </li>

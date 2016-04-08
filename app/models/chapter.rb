@@ -12,20 +12,4 @@ class Chapter < ActiveRecord::Base
 
   scope :included_in, -> (id) { where(course_id: id) }
 
-
-  # def getEligibleFor
-  #   @eligibles = []
-  #     self.sessions.each do |session|
-  #       p session.location
-  #     session.attendances.each do |attendance|
-  #       p User.find(attendance.user_id).username
-  #       p attedance.success
-  #       if(attendance.success == "true")
-  #         @eligibles.push(User.find(attendance.user_id))
-  #       end
-  #     end
-  #   end
-  #   return @eligibles
-  # end
-
 end

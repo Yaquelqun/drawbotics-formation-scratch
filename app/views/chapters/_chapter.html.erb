@@ -1,6 +1,6 @@
 <li>
   <%= link_to chapter.name, chapter %>
-  <% if params[:user_id].present? %>
-  <t\><%=link_to "attend the course", chapter_path(id: chapter.id,user_id: @user.id) %>
+  <% if params[:user_id].present? && chapter.position <= @current_chapter_number +1 %>
+  <t\><%=link_to "attend this chapter", chapter_path(id: chapter.id,user_id: @user.id) %>
   <% end %>
 </li>
