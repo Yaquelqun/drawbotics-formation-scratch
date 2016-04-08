@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   #validation process
   validates(:username, presence:true, allow_blank:false, length: {maximum: 60})
 
+  def validated_chapters
+    validated_attendances = attendances.validated
+    validated_sessions = validated_attendances.map(&:session)
+    validated_sessions.map(&:chapter).uniq
+  end
+
 end

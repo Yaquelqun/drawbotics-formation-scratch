@@ -29,12 +29,16 @@ class UsersController < ApplicationController
       fail!
     end
   end
-  
+
   def destroy
     User.find(params[:user_id]).delete
     redirect_to users_path
   end
 
+  def achievments
+    @user = User.find(params[:user_id])
+    @chapters = @user.validated_chapters
+  end
   private
 
   def user_params

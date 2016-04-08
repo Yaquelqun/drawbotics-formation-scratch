@@ -7,6 +7,8 @@ class Attendance < ActiveRecord::Base
   validates(:user_id, presence: true, allow_nil:false)
   validates(:session_id, presence: true, allow_nil:false)
 
+  scope :validated, -> { where(success: true)}
+
   def success!
     update!(success: true)
   end
