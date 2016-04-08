@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
 
   #validation process
   validates(:username, presence:true, allow_blank:false, length: {maximum: 60})
-  
+
 end

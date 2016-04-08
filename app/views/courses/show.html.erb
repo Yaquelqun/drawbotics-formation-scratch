@@ -6,6 +6,8 @@
 <br/>
 <%= link_to "delete this course", course_path(course_id: @course.id), method: :delete%>
 <br/>
+<%= link_to "edit this course name", edit_course_path%>
+<br/>
 <h2> List of Chapters </h2>
 <% if @chapters.any? %>
   <ul class = "chapters">

@@ -9,4 +9,20 @@ class Chapter < ActiveRecord::Base
   validates(:name, presence: true, length: {maximum: 60})
   validates(:position, presence: true)
   validates(:course_id, presence: true, allow_nil: false)
+
+  # def getEligibleFor
+  #   @eligibles = []
+  #     self.sessions.each do |session|
+  #       p session.location
+  #     session.attendances.each do |attendance|
+  #       p User.find(attendance.user_id).username
+  #       p attedance.success
+  #       if(attendance.success == "true")
+  #         @eligibles.push(User.find(attendance.user_id))
+  #       end
+  #     end
+  #   end
+  #   return @eligibles
+  # end
+
 end

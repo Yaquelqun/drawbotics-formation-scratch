@@ -1,0 +1,12 @@
+<h1>Update your Course</h1>
+
+<div >
+  <div >
+    <%= simple_form_for(@course) do |f| %>
+
+    <%= f.input :name, class: 'form-control' %>
+
+      <%= f.submit "confirm changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

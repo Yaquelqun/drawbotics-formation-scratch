@@ -4,6 +4,8 @@ USERNAME : <%= @user.username%>
 <br/>
 <%= link_to "delete this user", user_path(user_id: @user.id), method: :delete%>
 <br/>
+<%= link_to "edit this user", edit_user_path%>
+<br/>
 <%= link_to "add a course", new_course_path, class: "btn btn-lg btn-primary" %>
  <br/>
 <%= link_to "attend a course", '#', class: "btn btn-lg btn-primary" %>

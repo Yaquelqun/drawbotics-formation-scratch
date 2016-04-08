@@ -21,9 +21,24 @@ class SessionsController < ApplicationController
 
   def destroy
     Session.find(params[:session_id]).delete
+
     redirect_to courses_path #TODO need a better redirect
   end
 
+  def edit
+    @session = Session.find(params[:id])
+  end
+
+  def update
+    @session = Session.find(params[:id])
+    if @session.update_attributes(session_params)
+      redirect_to @session
+    else
+      fail!
+    end
+  end
+
+  
   private
 
   def user_ids

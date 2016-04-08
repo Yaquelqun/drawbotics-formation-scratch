@@ -14,6 +14,19 @@ def new
   end
 end
 
+def edit
+  @chapter = Chapter.find(params[:id])
+end
+
+def update
+  @chapter = Chapter.find(params[:id])
+  if @chapter.update_attributes (chapter_params)
+    redirect_to @chapter
+  else
+    dail!
+  end
+end
+
 def create
   @chapter = Chapter.create(chapter_params)
   redirect_to chapter_path(@chapter)

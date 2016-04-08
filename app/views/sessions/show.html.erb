@@ -1,8 +1,11 @@
 <h1>  Session <%= @session.position%> at <%= @session.date %> in <%= @session.location %> </h1>
 
-<h3> Course : <%= Course.find(Chapter.find(@session.chapter_id).course_id).name%>  Chapter :<%= Chapter.find(@session.chapter_id).name%> </h3>
+<h3> Course : <%= Course.find(Chapter.find(@session.chapter_id).course_id).name%></h3>
+<br/>
+<h3>Chapter :<%= Chapter.find(@session.chapter_id).name%> </h3>
 <%= link_to "delete this session", session_path(session_id: @session.id), method: :delete%>
-
+<br/>
+<%= link_to "edit this session", edit_session_path %>
 <h2> Participants </h2>
   <ul>
     <% @session.attendances.each do |attendance| %>
