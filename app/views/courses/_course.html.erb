@@ -1,4 +1,6 @@
 <li>
   <%= link_to course.name, course %>
-  
+  <% if params[:user_id].present? %>
+  <t\><%=link_to "attend the course", course_path(id: course.id,user_id: @user.id) %>
+  <% end %>
 </li>

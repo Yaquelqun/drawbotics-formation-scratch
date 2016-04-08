@@ -2,11 +2,18 @@ class CoursesController < ApplicationController
 
 def index
   @courses = Course.all
+  if(params[:user_id].present?)
+    @user = User.find(params[:user_id])
+  end
 end
 
 def show
   @course = Course.find(params[:id])
   @chapters = @course.chapters
+  if(params[:user_id].present?)
+    @current_chapter = User.current_chapter(@course)
+    @user = User.find(params[:user_id])
+  end
 end
 
 def new

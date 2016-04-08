@@ -9,7 +9,7 @@ USERNAME : <%= @user.username%>
 <br/>
 <%= link_to "add a course", new_course_path, class: "btn btn-lg btn-primary" %>
  <br/>
-<%= link_to "attend a course", '#', class: "btn btn-lg btn-primary" %>
+<%= link_to "attend a course",courses_path(user_id: @user.id), class: "btn btn-lg btn-primary" %>
 <br/>
  <br/>
 <%= link_to "achievments", user_achievments_path(user_id: @user.id), class: "btn btn-lg btn-primary" %>

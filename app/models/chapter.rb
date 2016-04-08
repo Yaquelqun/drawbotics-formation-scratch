@@ -10,6 +10,9 @@ class Chapter < ActiveRecord::Base
   validates(:position, presence: true)
   validates(:course_id, presence: true, allow_nil: false)
 
+  scope :included_in, -> (id) { where(course_id: id) }
+
+
   # def getEligibleFor
   #   @eligibles = []
   #     self.sessions.each do |session|
