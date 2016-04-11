@@ -12,12 +12,14 @@
       <li>
         <ul>
           <%= "#{attendance.user_username} - #{attendance.success ? "success" : "failed"}"%>
-          <li>
-            <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
-          </li>
-          <li>
-            <%= link_to "fail", attendance_path(id: attendance.id, success: false), method: :put%>
-          </li>
+          <% if User.exists?(attendance.user_id) %>
+            <li>
+              <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
+            </li>
+            <li>
+              <%= link_to "fail", attendance_path(id: attendance.id, success: false), method: :put%>
+            </li>
+          <%end%>
         </ul>
       </li>
     <% end%>
