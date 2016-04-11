@@ -11,7 +11,7 @@
     <% @session.attendances.each do |attendance| %>
       <li>
         <ul>
-          <%= "#{attendance.user.username} - #{attendance.success ? "success" : "failed"}"%>
+          <%= "#{attendance.user_username} - #{attendance.success ? "success" : "failed"}"%>
           <li>
             <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
           </li>

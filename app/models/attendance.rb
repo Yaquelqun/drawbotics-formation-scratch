@@ -7,6 +7,10 @@ class Attendance < ActiveRecord::Base
   validates(:user_id, presence: true, allow_nil:false)
   validates(:session_id, presence: true, allow_nil:false)
 
+  after_create :save_user
+  after_validation :save_user
+  after_update :save_user
+
   scope :validated, -> { where(success: true)}
 
   def success!
@@ -24,4 +28,11 @@ class Attendance < ActiveRecord::Base
   def failed?
     !success
   end
+
+  private
+
+  def save_user
+    self.user_username = User.find(user_id).username unless User.find(user_id).username == nil
+  end
+
 end

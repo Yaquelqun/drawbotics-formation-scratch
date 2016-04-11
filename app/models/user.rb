@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       if(sorted_chapter.last != nil)
       sorted_chapter.last.position
     else
-      return 1
+      return 0
     end
   end
 

@@ -20,6 +20,6 @@ private
   end
 
   def attendance_params
-    params.require(:attendance).permit(:session_id, :user_id)
+    params.require(:attendance).permit(:session_id, :user_id, :user_username)
   end
 end
