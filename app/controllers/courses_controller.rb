@@ -11,7 +11,6 @@ def show
   @course = Course.find(params[:id])
   @chapters = @course.chapters
   if(params[:user_id].present?)
-    @eligible_chapters = []
     @user = User.find(params[:user_id])
     last_eligible_chapter = @user.last_eligible_chapter(@course)
     @eligible_chapters = last_eligible_chapter.higher_items

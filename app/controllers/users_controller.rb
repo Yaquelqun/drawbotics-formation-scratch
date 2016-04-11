@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  include Users
   def new
       @user = User.new
     end
@@ -33,11 +33,6 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:user_id]).destroy
     redirect_to users_path
-  end
-
-  def achievements
-    @user = User.find(params[:user_id])
-    @chapters = @user.validated_chapters.compact
   end
 
   private

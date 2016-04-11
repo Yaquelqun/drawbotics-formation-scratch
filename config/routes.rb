@@ -2,9 +2,16 @@ Rails.application.routes.draw do
 
 root 'static_pages#home'
 
-get 'user_achievements' => 'users#achievements'
+# resources :users do
+#     resources :achievements,  only: :index, controller: 'users/achievements'
+# end
 
-resources :users
+resources :users do
+  scope :module => "users" do
+    resources :achievements, only: :index
+  end
+end
+
 resources :courses
 resources :chapters
 resources :sessions
