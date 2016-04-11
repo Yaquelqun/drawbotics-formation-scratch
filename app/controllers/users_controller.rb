@@ -35,10 +35,11 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def achievments
+  def achievements
     @user = User.find(params[:user_id])
-    @chapters = @user.validated_chapters
+    @chapters = @user.validated_chapters.compact
   end
+
   private
 
   def user_params

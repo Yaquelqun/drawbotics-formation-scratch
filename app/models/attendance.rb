@@ -11,6 +11,9 @@ class Attendance < ActiveRecord::Base
   after_validation :save_user
   after_update :save_user
 
+  delegate :chapter, to: :session
+  delegate :course, to: :chapter, prefix: true
+
   scope :validated, -> { where(success: true)}
 
   def success!
@@ -20,6 +23,7 @@ class Attendance < ActiveRecord::Base
   def fail!
     update!(success: false)
   end
+
 
   def success?
     success
@@ -34,5 +38,6 @@ class Attendance < ActiveRecord::Base
   def save_user
     self.user_username = User.find(user_id).username unless User.find(user_id).username == nil
   end
+
 
 end

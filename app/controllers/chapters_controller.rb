@@ -4,17 +4,12 @@ def show
   @chapter = Chapter.find(params[:id])
   @sessions = @chapter.sessions
   if(params[:user_id].present?)
-    @user = User.find(params[:user_id])   
+    @user = User.find(params[:user_id])
   end
 end
 
 def new
   @chapter = course.chapters.build
-  if course.chapters.any?
-    @chapter.position = course.chapters.count + 1
-  else
-    @chapter.position = 1
-  end
 end
 
 def edit

@@ -14,14 +14,16 @@ class User < ActiveRecord::Base
     validated_sessions.map(&:chapter).uniq
   end
 
-  def current_chapter(course)
-      validated_list = validated_chapters
-      pertinent_chapters = validated_list.delete_if{|chapter| chapter.course_id != course.id}
-      sorted_chapter = pertinent_chapters.sort_by{|chapter| chapter.position}
+  def validated_chapters_for(course)
+    pertinent_chapters = validated_chapters.delete_if{|chapter| chapter.course_id != course.id}
+  end
+
+  def last_eligible_chapter(course)
+      sorted_chapter = validated_chapters_for(course)
       if(sorted_chapter.last != nil)
-      sorted_chapter.last.position
+      validated_chapters_for(course).last
     else
-      return 0
+      course.chapters.first
     end
   end
 

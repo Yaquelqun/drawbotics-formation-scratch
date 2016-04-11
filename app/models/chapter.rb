@@ -7,8 +7,9 @@ class Chapter < ActiveRecord::Base
 
   #validation process
   validates(:name, presence: true, length: {maximum: 60})
-  validates(:position, presence: true)
   validates(:course_id, presence: true, allow_nil: false)
+
+  acts_as_list scope: :course, add_new_at: :bottom
 
   scope :included_in, -> (id) { where(course_id: id) }
 

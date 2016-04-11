@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 root 'static_pages#home'
 
-get 'user_achievments' => 'users#achievments'
+get 'user_achievements' => 'users#achievements'
 
 resources :users
 resources :courses
