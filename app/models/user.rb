@@ -15,7 +15,14 @@ class User < ActiveRecord::Base
   end
 
   def current_chapter(course)
-    attendances.validated.map(&:session).map(&:chapter).delete_if{|chapter| chapter.course_id != course.id}.sort_by{|chapter| chapter.position}.last.position
+      validated_list = validated_chapters
+      pertinent_chapters = validated_list.delete_if{|chapter| chapter.course_id != course.id}
+      sorted_chapter = pertinent_chapters.sort_by{|chapter| chapter.position}
+      if(sorted_chapter.last != nil)
+      sorted_chapter.last.position
+    else
+      return 1
+    end
   end
 
 end

@@ -6,9 +6,10 @@ def update
 end
 
 def create
-  @attendance = Attendance.create(attendance_params)
-  redirect_to :back
+  @attendance = Attendance.create(session_id: params[:id], user_id: params[:user_id])
+  redirect_to User.find(params[:user_id])
 end
+
 private
   def attendance
     @attendance ||= Attendance.find(params[:id])
