@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  
+
   private
 
   def user_ids
@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
   end
 
   def session_params
-    params.require(:session).permit(:location, :date, :position, :chapter_id)
+    params.require(:session).permit(:location, :date, :position, :chapter_id, :duration)
   end
 
   def chapter

@@ -6,6 +6,7 @@
 <%= link_to "edit this session", edit_session_path , class: "btn btn-sm btn-primary"%>
 <br/>
 <br/>
+<h4> Duration : <%= Session.find(@session.id).duration %> minutes
 <h2> Participants </h2>
   <ul>
     <% @session.attendances.each do |attendance| %>
