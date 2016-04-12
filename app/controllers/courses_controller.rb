@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 def index
   @courses = Course.all
   if(params[:user_id].present?)
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 end
 
@@ -11,7 +11,7 @@ def show
   @course = Course.find(params[:id])
   @chapters = @course.chapters
   if(params[:user_id].present?)
-    @user = User.find(params[:user_id])
+    @user = current_user
     last_eligible_chapter = @user.last_eligible_chapter(@course)
     @eligible_chapters = last_eligible_chapter.higher_items
     @eligible_chapters.push last_eligible_chapter

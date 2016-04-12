@@ -3,7 +3,7 @@ module Users
     class AchievementsController < ApplicationController
 
         def index
-          @user = User.find(params[:user_id])
+          @user = current_user
           @chapters = @user.validated_chapters.compact
         end
 
