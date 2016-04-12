@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include Users
+  before_action :authenticate_user!
   def new
       @user = User.new
     end
