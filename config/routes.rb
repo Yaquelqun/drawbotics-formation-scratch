@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 root 'static_pages#home'
 
-devise_for :users
+devise_for :users, :controllers => { :passwords => "users/passwords", :confirmations => "users/confirmations" }
 
 resources :users do
   scope :module => "users" do
