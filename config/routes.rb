@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+
 root 'static_pages#home'
 
-# resources :users do
-#     resources :achievements,  only: :index, controller: 'users/achievements'
-# end
+devise_for :users
 
 resources :users do
   scope :module => "users" do
