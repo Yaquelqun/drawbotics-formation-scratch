@@ -1,12 +1,11 @@
 <h1>
   <%= @course.name %>
 </h1>
+<%= link_to "delete this course", course_path(course_id: @course.id), method: :delete, class: "btn btn-sm btn-primary"%>
+<%= link_to "edit this course name", edit_course_path, class: "btn btn-sm btn-primary"%>
+<br/>
 <br/>
 <%= link_to "Add a chapter to this course", new_chapter_path(course_id: @course.id), class: "btn btn-lg btn-primary" %>
-<br/>
-<%= link_to "delete this course", course_path(course_id: @course.id), method: :delete%>
-<br/>
-<%= link_to "edit this course name", edit_course_path%>
 <br/>
 <h2> List of Chapters </h2>
 <% if @chapters.any? %>

@@ -2,14 +2,13 @@
  <br/>
 USERNAME : <%= @user.username%>
 <br/>
-<%= link_to "delete this user", user_path(user_id: @user.id), method: :delete%>
 <br/>
-<%= link_to "edit this user", edit_user_path%>
+<%= link_to "delete this user", user_path(user_id: @user.id), method: :delete,class: "btn btn-sm btn-primary"%>
+<%= link_to "edit this user", edit_user_path,class: "btn btn-sm btn-primary"%>
 <br/>
 <br/>
-<%= link_to "add a course", new_course_path, class: "btn btn-lg btn-primary" %>
- <br/>
-<%= link_to "attend a course",courses_path(user_id: @user.id), class: "btn btn-lg btn-primary" %>
+<%= link_to "add a course", new_course_path, class: "btn btn-sm btn-primary" %>
+<%= link_to "attend a course",courses_path(user_id: @user.id), class: "btn btn-sm btn-primary" %>
 <br/>
- <br/>
-<%= link_to "achievements", user_achievements_path(@user), class: "btn btn-lg btn-primary" %>
+<br/>
+<%= link_to "achievements", user_achievements_path(@user), class: "btn btn-sm btn-primary" %>

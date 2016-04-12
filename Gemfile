@@ -7,10 +7,14 @@ gem 'rails', '4.2.6'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-
+#gem used for holding position of items in an array
 gem 'acts_as_list'
-
+#best authentication gem out there
+gem 'devise'
+#upgraded form that allow easier handling (especially with relation has_many... through)
 gem 'simple_form'
+#frontent framework
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
