@@ -3,7 +3,7 @@ class Session < ActiveRecord::Base
 belongs_to :chapter
 has_many :attendances
 has_many :users, through: :attendances, dependent: :nullify
-belongs_to :teacher,, class_name: "User::Teacher"
+belongs_to :teacher, class_name: "User::Teacher"
 
 #validation process
 validates(:location, presence: true, allow_blank: false, length: {maximum: 60} )

@@ -21,6 +21,7 @@ end
 
 def new
   @course = Course.new
+  @course.author_id = current_user.id
 end
 
 def create
@@ -49,7 +50,7 @@ end
 private
 
 def course_params
-  params.require(:course).permit(:name)
+  params.require(:course).permit(:name, :author_id)
 end
 
 end

@@ -3,6 +3,7 @@ class ChaptersController < ApplicationController
 def show
   @chapter = Chapter.find(params[:id])
   @sessions = @chapter.sessions
+  @course = Course.find(@chapter.course_id)
   if(params[:user_id].present?)
     @user = current_user
   end

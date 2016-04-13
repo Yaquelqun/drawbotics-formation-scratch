@@ -16,9 +16,9 @@ class Chapter < ActiveRecord::Base
   def eligible_students
     previous_chapter = self.higher_item
     if previous_chapter == nil
-      User.all
+      Student.all
     else
-      previous_chapter.attendances.validated.map(&:user)
+      previous_chapter.attendances.validated.map(&:user).reject{|user| user.is_teacher} #TODO the reject is basically useless since Teachers can't be added to the fist chapter :D
     end
   end
 end

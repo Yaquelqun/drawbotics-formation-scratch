@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def show
     @session = Session.includes(attendances: [:user]).find(params[:id])
+    @course = @session.course
   end
 
   def new

@@ -3,14 +3,16 @@
 USERNAME : <%= @user.username%>
 <br/>
 <br/>
-<%= link_to "delete this user", user_path(user_id: @user.id), method: :delete,class: "btn btn-sm btn-primary"%>
-<%= link_to "edit this user", edit_user_path,class: "btn btn-sm btn-primary"%>
-<br/>
-<br/>
-<% if current_user.role != "student" %>
-  <%= link_to "add a course", new_course_path, class: "btn btn-sm btn-primary" %>
-<%end%>
-<%= link_to "attend a course",courses_path(user_id: @user.id), class: "btn btn-sm btn-primary" %>
-<br/>
-<br/>
+<% if @user == current_user %>
+  <%= link_to "delete this user", user_path(user_id: @user.id), method: :delete,class: "btn btn-sm btn-primary"%>
+  <%= link_to "edit this user", edit_user_path,class: "btn btn-sm btn-primary"%>
+  <br/>
+  <br/>
+  <% if @user.type != "Student" %>
+    <%= link_to "add a course", new_course_path, class: "btn btn-sm btn-primary" %>
+  <%end%>
+  <%= link_to "attend a course",courses_path(user_id: @user.id), class: "btn btn-sm btn-primary" %>
+  <br/>
+  <br/>
+<% end%>
 <%= link_to "achievements", user_achievements_path(@user), class: "btn btn-sm btn-primary" %>
