@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413082622) do
+ActiveRecord::Schema.define(version: 20160413140123) do
 
   create_table "attendances", force: :cascade do |t|
     t.boolean "success"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160413082622) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "author_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160413082622) do
     t.datetime "updated_at"
     t.integer  "duration",   default: 60
     t.integer  "capacity",   default: 15
+    t.integer  "teacher_id"
   end
 
   create_table "users", force: :cascade do |t|
