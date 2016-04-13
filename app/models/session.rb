@@ -11,4 +11,9 @@ validates(:position, presence: true, allow_nil: false )
 validates(:chapter_id, presence: true, allow_nil: false, )
 
 delegate :course, to: :chapter
+
+def student_number
+  attendances.count
+end
+
 end
