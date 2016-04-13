@@ -1,10 +1,10 @@
-<li>
+<li
    <%= link_to "Session number #{session.position}", session %> : <%=session.location%> at <%=session.date%>
    <% if params[:user_id].present?%>
-    <% if session.student_number < session.capacity%>
+    <% if session.student_number < session.capacity && session.date >= DateTime.now%>
       <t\><%=link_to "attend this session", attendances_path(id: session.id,user_id: @user.id), method: :post %>
     <%else%>
-      <t\> Session full !!
+      <t\> can't attend this session (either full or already passed)
     <%end%>
    <% end %>
 </li>
