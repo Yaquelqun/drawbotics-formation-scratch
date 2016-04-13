@@ -1,4 +1,4 @@
-<li
+<li>
    <%= link_to "Session number #{session.position}", session %> : <%=session.location%> at <%=session.date%>
    <% if params[:user_id].present?%>
     <% if session.student_number < session.capacity && session.date >= DateTime.now%>
