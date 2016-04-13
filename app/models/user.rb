@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
   #validation process
   validates(:username, presence:true, allow_blank:false, length: {maximum: 60})
 
+  def is_student
+    false
+  end
+
+  def is_teacher
+    false
+  end
+  
   def validated_chapters
     validated_attendances = attendances.validated
     validated_sessions = validated_attendances.map(&:session)

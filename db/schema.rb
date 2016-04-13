@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412175654) do
+ActiveRecord::Schema.define(version: 20160413082622) do
 
   create_table "attendances", force: :cascade do |t|
     t.boolean "success"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160412175654) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "role",                   default: "student"
+    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
