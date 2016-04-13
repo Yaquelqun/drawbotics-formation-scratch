@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   #   @current_user ||= User.find(params[:user_id]) if params[:user_id]
   # end
 
+
  protected
 
  def configure_permitted_parameters
