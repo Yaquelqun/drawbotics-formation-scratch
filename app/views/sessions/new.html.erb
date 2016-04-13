@@ -3,7 +3,7 @@
 <div >
   <div >
     <%= simple_form_for(@session) do |f| %>
-    <%= f.association :users, as: :check_boxes, collection: User.all, label_method: lambda {|user| user.username.camelize } %>
+    <%= f.association :users, as: :check_boxes, collection: Chapter.find(params[:chapter_id]).eligible_students, label_method: lambda {|user| user.username.camelize } %>
     <%= f.input :location, class: 'form-control' %>
 
 

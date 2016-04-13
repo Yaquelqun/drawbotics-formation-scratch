@@ -13,4 +13,12 @@ class Chapter < ActiveRecord::Base
 
   scope :included_in, -> (id) { where(course_id: id) }
 
+  def eligible_students
+    previous_chapter = self.higher_item
+    if previous_chapter == nil
+      User.all
+    else
+      previous_chapter.attendances.validated.map(&:user)
+    end
+  end
 end
