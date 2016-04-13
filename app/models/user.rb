@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  #:lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable
+
   #relationships to other models
   has_many :attendances
   has_many :sessions, through: :attendances
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
 
   #validation process
   validates(:username, presence:true, allow_blank:false, length: {maximum: 60})
+  validates(:type, presence:true)
 
   def is_student
     false
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
   def is_teacher
     false
   end
-  
+
   def validated_chapters
     validated_attendances = attendances.validated
     validated_sessions = validated_attendances.map(&:session)
