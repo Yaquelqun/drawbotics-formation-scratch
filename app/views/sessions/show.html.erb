@@ -11,13 +11,14 @@
 <br/>
 <br/>
 <h4> Duration : <%= @session.duration %> minutes
+<h4> dispensed by <%= link_to @teacher.username, user_path(@teacher) %>
 <h2> Participants : <%= "#{@session.student_number}/#{@session.capacity}" %> </h2>
   <ul>
     <% @session.attendances.each do |attendance| %>
       <li>
         <ul>
           <%= "#{attendance.user_username} - #{attendance.success ? "success" : "failed"}"%>
-          <% if User.exists?(attendance.user_id) %>
+          <% if User.exists?(attendance.user_id) && current_user.id == @session.teacher_id %>
             <li>
               <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
             </li>

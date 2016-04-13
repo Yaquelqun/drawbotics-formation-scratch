@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   def show
     @session = Session.includes(attendances: [:user]).find(params[:id])
     @course = @session.course
+    @teacher = Teacher.find(@session.teacher_id)
   end
 
   def new
@@ -12,6 +13,7 @@ class SessionsController < ApplicationController
     else
       @session.position = 1
     end
+    @session.teacher_id = current_user.id
   end
 
   def create
@@ -47,7 +49,7 @@ class SessionsController < ApplicationController
   end
 
   def session_params
-    params.require(:session).permit(:location, :date, :position, :chapter_id, :duration, :capacity)
+    params.require(:session).permit(:location, :date, :position, :chapter_id, :duration, :capacity, :teacher_id)
   end
 
   def chapter
