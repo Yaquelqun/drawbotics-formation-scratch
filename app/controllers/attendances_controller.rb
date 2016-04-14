@@ -6,8 +6,13 @@ def update
 end
 
 def create
-  @attendance = Attendance.create(session_id: params[:id], user_id: params[:user_id]) unless Attendance.exists?(session_id: params[:id], user_id: params[:user_id])
-  redirect_to user_path(User.find(params[:user_id]))
+  if(params[:user_id] != nil)
+    @attendance = Attendance.create(session_id: params[:id], user_id: params[:user_id], user_username: User.find(params[:user_id]).username) unless Attendance.exists?(session_id: params[:id], user_id: params[:user_id])
+  else
+    infos = params[:attendance][:user_username].split(":")
+    @attendance = Attendance.create(session_id: params[:attendance][:session_id], user_id: infos.first, user_username: infos.last)
+  end
+  redirect_to user_path(current_user)
 end
 
 private

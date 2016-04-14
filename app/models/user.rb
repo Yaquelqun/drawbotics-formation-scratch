@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
       if(sorted_chapter.last != nil)
       validated_chapters_for(course).last
     else
-      course.chapters.first
+      nil
     end
   end
 

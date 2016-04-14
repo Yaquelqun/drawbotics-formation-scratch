@@ -13,9 +13,14 @@ def show
   if(params[:user_id].present?)
     @user = current_user
     last_eligible_chapter = @user.last_eligible_chapter(@course)
-    @eligible_chapters = last_eligible_chapter.higher_items
-    @eligible_chapters.push last_eligible_chapter
-    @eligible_chapters.push(last_eligible_chapter.lower_items.first)
+    if(last_eligible_chapter != nil)
+      @eligible_chapters = last_eligible_chapter.higher_items
+      @eligible_chapters.push last_eligible_chapter
+      @eligible_chapters.push(last_eligible_chapter.lower_items.first)
+    else
+      @eligible_chapters = []
+      @eligible_chapters.push(@course.chapters.first)
+    end
   end
 end
 

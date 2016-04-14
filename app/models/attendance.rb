@@ -7,9 +7,9 @@ class Attendance < ActiveRecord::Base
   validates(:user_id, presence: true, allow_nil:false)
   validates(:session_id, presence: true, allow_nil:false)
 
-  after_create :save_user
-  after_validation :save_user
-  after_update :save_user
+  # after_create :save_user
+  # after_validation :save_user
+  # after_update :save_user
 
   delegate :chapter, to: :session
   delegate :course, to: :chapter, prefix: true

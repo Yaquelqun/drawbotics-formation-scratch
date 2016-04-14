@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   #   @current_user ||= User.find(params[:user_id]) if params[:user_id]
   # end
 
+  def after_sign_in_path_for(resource)
+      user_path(current_user)
+  end
 
  protected
 

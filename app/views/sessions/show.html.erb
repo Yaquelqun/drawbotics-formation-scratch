@@ -4,10 +4,17 @@
 <h3>Chapter :<%= Chapter.find(@session.chapter_id).name%> </h3>
 
 <% if current_user.id == @course.author_id %>
-<%= link_to "delete this session", session_path(session_id: @session.id), method: :delete, class: "btn btn-sm btn-primary"%>
-<%= link_to "edit this session", edit_session_path , class: "btn btn-sm btn-primary"%>
-<%end%>
+  <%= link_to "delete this session", session_path(session_id: @session.id), method: :delete, class: "btn btn-sm btn-primary"%>
+  <%= link_to "edit this session", edit_session_path , class: "btn btn-sm btn-primary"%>
 
+  <%= simple_form_for(Attendance.new) do |f| %>
+    <%= f.input :user_username, collection: Student.all.map{|student| "#{student.id}:#{student.username}"}, required: true, prompt: "Add a Student"%>
+    <%= f.hidden_field :session_id, value: @session.id%>
+
+    <%= f.submit "add this Student", class: "btn btn-primary" %>
+  <% end %>
+
+<%end%>
 <br/>
 <br/>
 <h4> Duration : <%= @session.duration %> minutes
