@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+before_action :authenticate_user!
 
 def index
   @courses = Course.all
@@ -32,7 +33,11 @@ def new
 end
 
 def create
-  @course = Course.create(course_params)
+  if current_user.type == "Teacher"
+    @course = Course.create(course_params)
+  else
+    flash[:notice] = "you can't do that !!"
+  end
   redirect_to courses_path
 end
 
