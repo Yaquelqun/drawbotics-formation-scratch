@@ -36,7 +36,7 @@ end
     context "student logged in" do
         login_user
       it "can't create the course" do
-        post "create", :course => {"name" => "YOLO", "author_id" => subject.current_user.id}
+        post "create", :course => {Faker::StarWars.planet => "YOLO", "author_id" => subject.current_user.id}
         expect(flash[:notice])
       end
     end
@@ -44,7 +44,7 @@ end
         login_user
       it "can create the course" do
         subject.current_user.type = "Teacher"
-        post "create", :course => {"name" => "YOLO", "author_id" => subject.current_user.id}
+        post "create", :course => {"name" => Faker::StarWars.planet, "author_id" => subject.current_user.id}
         expect(response).should redirect_to courses_path
       end
     end

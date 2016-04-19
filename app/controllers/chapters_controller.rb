@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-
+before_action :authenticate_user!
 def show
   @chapter = Chapter.find(params[:id])
   @sessions = @chapter.sessions
@@ -12,7 +12,11 @@ def show
 end
 
 def new
-  @chapter = course.chapters.build
+  if(params[:course_id])
+    @chapter = course.chapters.build
+  else
+    redirect_to courses_path
+  end
 end
 
 def edit
@@ -29,13 +33,18 @@ def update
 end
 
 def create
+  if (Course.find(chapter_params[:course_id]).author_id == current_user.id && current_user.type != "Student")
   @chapter = Chapter.create(chapter_params)
   redirect_to chapter_path(@chapter)
+  else
+    flash[:notice] = "you're not authorized to do that"
+    redirect_to courses_path
+  end
 end
 
 def destroy
   Chapter.find(params[:chapter_id]).delete
-  redirect_to courses_path #TODO need a better redirect
+  redirect_to course_path(course)
 end
 
 private
