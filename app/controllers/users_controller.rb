@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_is_me = @user == current_user ? true : false
+    @user_is_no_student = @user.type != "Student" ? true : false 
   end
 
   def create

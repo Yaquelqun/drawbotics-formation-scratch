@@ -1,6 +1,6 @@
 <h1>  Chapter <%= @chapter.position%> : <%= @chapter.name %> </h1>
 
-<% if current_user.id == @course.author_id %>
+<% if @is_author %>
   <%= link_to "edit this chapter", edit_chapter_path, class: "btn btn-sm btn-primary"%>
   <%= link_to "delete this chapter", chapter_path(chapter_id: @chapter.id), method: :delete, class: "btn btn-sm btn-primary"%>
   <br/>
@@ -10,7 +10,7 @@
 
 <br/>
 <h2> List of Sessions </h2>
-<% if @sessions.any? %>
+<% if @has_sessions %>
   <ul class = "sessions">
     <%= render @sessions %>
   </ul>

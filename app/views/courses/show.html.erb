@@ -1,7 +1,7 @@
 <h1>
   <%= @course.name %>
 </h1>
-<% if current_user.id == @course.author_id %>
+<% if @is_author%>
   <%= link_to "delete this course", course_path(course_id: @course.id), method: :delete, class: "btn btn-sm btn-primary"%>
   <%= link_to "edit this course name", edit_course_path, class: "btn btn-sm btn-primary"%>
   <br/>
@@ -10,7 +10,7 @@
 <%end%>
 <br/>
 <h2> List of Chapters </h2>
-<% if @chapters.any? %>
+<% if @has_chapters %>
   <ul class = "chapters">
     <%= render @chapters %>
   </ul>

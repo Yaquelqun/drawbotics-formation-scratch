@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
   def show
     @session = Session.includes(attendances: [:user]).find(params[:id])
     @course = @session.course
+    @is_author = current_user.id == @course.author_id ? true : false
     @teacher = Teacher.find(@session.teacher_id)
+    @is_teacher = current_user.id == @session.teacher_id ? true : false
   end
 
   def new

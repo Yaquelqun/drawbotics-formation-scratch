@@ -10,8 +10,10 @@ end
 def show
   @course = Course.find(params[:id])
   @chapters = @course.chapters
-  if(params[:user_id].present?)
+  @has_chapters = @chapters.any?
+  unless(current_user == nil)
     @user = current_user
+    @is_author = current_user.id == @course.author_id ? true : false
     last_eligible_chapter = @user.last_eligible_chapter(@course)
     if(last_eligible_chapter != nil)
       @eligible_chapters = last_eligible_chapter.higher_items

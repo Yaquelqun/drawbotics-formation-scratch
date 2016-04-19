@@ -3,7 +3,7 @@
 <h3> Course : <%= Course.find(Chapter.find(@session.chapter_id).course_id).name%></h3>
 <h3>Chapter :<%= Chapter.find(@session.chapter_id).name%> </h3>
 
-<% if current_user.id == @course.author_id %>
+<% if @is_author %>
   <%= link_to "delete this session", session_path(session_id: @session.id), method: :delete, class: "btn btn-sm btn-primary"%>
   <%= link_to "edit this session", edit_session_path , class: "btn btn-sm btn-primary"%>
 
@@ -25,7 +25,7 @@
       <li>
         <ul>
           <%= "#{attendance.user_username} - #{attendance.success ? "success" : "failed"}"%>
-          <% if User.exists?(attendance.user_id) && current_user.id == @session.teacher_id %>
+          <% if User.exists?(attendance.user_id) && @is_teacher %>
             <li>
               <%= link_to "success", attendance_path(id: attendance.id, success: true), method: :put%>
             </li>

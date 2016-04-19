@@ -4,6 +4,8 @@ def show
   @chapter = Chapter.find(params[:id])
   @sessions = @chapter.sessions
   @course = Course.find(@chapter.course_id)
+  @is_author = current_user.id == @course.author_id ? true : false
+  @has_sessions = @sessions.any?
   if(params[:user_id].present?)
     @user = current_user
   end
