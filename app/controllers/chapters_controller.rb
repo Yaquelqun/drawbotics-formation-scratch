@@ -28,14 +28,14 @@ def update
   if @chapter.update_attributes (chapter_params)
     redirect_to @chapter
   else
-    dail!
+    fail!
   end
 end
 
 def create
   if (Course.find(chapter_params[:course_id]).author_id == current_user.id && current_user.type != "Student")
-  @chapter = Chapter.create(chapter_params)
-  redirect_to chapter_path(@chapter)
+    @chapter = Chapter.create(chapter_params)
+    redirect_to chapter_path(@chapter)
   else
     flash[:notice] = "you're not authorized to do that"
     redirect_to courses_path

@@ -49,6 +49,18 @@ end
         expect(flash[:notice])
       end
     end
+
+    context "teacher create a course and then a chapter" do
+        course = Course.last
+        user = User.find(course.author_id)
+
+      it "can create the chapter" do
+        sign_in user
+        subject.current_user.type = "Teacher"
+        post "create", :chapter => {"name" => Faker::Beer.name, "course_id" => course.id}
+        expect(response).should redirect_to chapter_path(Chapter.last)
+      end
+    end
   end
 
   describe ".new" do
@@ -62,4 +74,6 @@ end
     end
     end
   end
+
+
 end
